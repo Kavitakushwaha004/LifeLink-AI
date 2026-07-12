@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nearby Hospitals</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🏥 Nearby Hospitals</h1>
+</header>
+
+<div class="container">
+
+<input type="text" id="search" placeholder="Search Hospital..." onkeyup="searchHospital()">
+
+<div class="card hospital">
+<h2>Apollo Hospital</h2>
+<p>📍 Bhopal, MP</p>
+<p>⭐ 4.8/5</p>
+
+<a href="https://maps.google.com/?q=Apollo+Hospital+Bhopal" target="_blank">
+<button>📍 Open Map</button>
+</a>
+
+<a href="tel:+917555555555">
+<button>📞 Call</button>
+</a>
+
+</div>
+
+<div class="card hospital">
+<h2>AIIMS Bhopal</h2>
+<p>📍 Saket Nagar</p>
+<p>⭐ 4.7/5</p>
+
+<a href="https://maps.google.com/?q=AIIMS+Bhopal" target="_blank">
+<button>📍 Open Map</button>
+</a>
+
+<a href="tel:+917554000000">
+<button>📞 Call</button>
+</a>
+
+</div>
+
+<div class="card hospital">
+<h2>Hamidia Hospital</h2>
+<p>📍 Royal Market</p>
+<p>⭐ 4.5/5</p>
+
+<a href="https://maps.google.com/?q=Hamidia+Hospital+Bhopal" target="_blank">
+<button>📍 Open Map</button>
+</a>
+
+<a href="tel:+917554444444">
+<button>📞 Call</button>
+</a>
+
+</div>
+
+<div class="card hospital">
+<h2>People's Hospital</h2>
+<p>📍 Karond</p>
+<p>⭐ 4.4/5</p>
+
+<a href="https://maps.google.com/?q=People+Hospital+Bhopal" target="_blank">
+<button>📍 Open Map</button>
+</a>
+
+<a href="tel:+917553333333">
+<button>📞 Call</button>
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+function searchHospital(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let hospital=document.getElementsByClassName("hospital");
+
+for(let i=0;i<hospital.length;i++){
+
+let text=hospital[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+hospital[i].style.display="block";
+}
+else{
+hospital[i].style.display="none";
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

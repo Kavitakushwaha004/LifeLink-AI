@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Record</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>📄 Digital Health Record</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<input type="text" id="name" placeholder="Full Name">
+
+<input type="number" id="age" placeholder="Age">
+
+<select id="blood">
+<option>Select Blood Group</option>
+<option>A+</option>
+<option>A-</option>
+<option>B+</option>
+<option>B-</option>
+<option>AB+</option>
+<option>AB-</option>
+<option>O+</option>
+<option>O-</option>
+</select>
+
+<input type="text" id="allergy" placeholder="Allergies">
+
+<input type="text" id="disease" placeholder="Medical Condition">
+
+<button onclick="saveRecord()">Save Record</button>
+
+<button onclick="showRecord()">View Record</button>
+
+</div>
+
+<div class="card">
+<h2>Saved Record</h2>
+<p id="output"></p>
+</div>
+
+</div>
+
+<script>
+
+function saveRecord(){
+
+let record={
+
+name:document.getElementById("name").value,
+age:document.getElementById("age").value,
+blood:document.getElementById("blood").value,
+allergy:document.getElementById("allergy").value,
+disease:document.getElementById("disease").value
+
+};
+
+localStorage.setItem("healthRecord",JSON.stringify(record));
+
+alert("Record Saved Successfully");
+
+}
+
+function showRecord(){
+
+let data=JSON.parse(localStorage.getItem("healthRecord"));
+
+if(data==null){
+
+document.getElementById("output").innerHTML="No Record Found";
+
+return;
+
+}
+
+document.getElementById("output").innerHTML=
+
+"<b>Name :</b> "+data.name+"<br>"+
+"<b>Age :</b> "+data.age+"<br>"+
+"<b>Blood Group :</b> "+data.blood+"<br>"+
+"<b>Allergy :</b> "+data.allergy+"<br>"+
+"<b>Disease :</b> "+data.disease;
+
+}
+
+</script>
+
+</body>
+</html>

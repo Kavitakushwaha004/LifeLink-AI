@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicine Reminder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>💊 Medicine Reminder</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<label>Medicine Name</label>
+<input type="text" id="medicine" placeholder="Enter Medicine Name">
+
+<label>Reminder Time</label>
+<input type="time" id="time">
+
+<button onclick="saveReminder()">Save Reminder</button>
+
+</div>
+
+<div class="card">
+
+<h2>Saved Reminder</h2>
+
+<p id="showReminder">No Reminder Added</p>
+
+<button onclick="deleteReminder()">Delete Reminder</button>
+
+</div>
+
+</div>
+
+<script>
+
+window.onload=function(){
+
+displayReminder();
+
+setInterval(checkReminder,1000);
+
+}
+
+function saveReminder(){
+
+let medicine=document.getElementById("medicine").value;
+let time=document.getElementById("time").value;
+
+if(medicine=="" || time==""){
+
+alert("Please Fill All Details");
+return;
+
+}
+
+localStorage.setItem("medicine",medicine);
+localStorage.setItem("time",time);
+
+displayReminder();
+
+alert("Reminder Saved");
+
+}
+
+function displayReminder(){
+
+let medicine=localStorage.getItem("medicine");
+let time=localStorage.getItem("time");
+
+if(medicine!=null){
+
+document.getElementById("showReminder").innerHTML=
+"💊 "+medicine+"<br>⏰ "+time;
+
+}
+
+}
+
+function deleteReminder(){
+
+localStorage.removeItem("medicine");
+localStorage.removeItem("time");
+
+document.getElementById("showReminder").innerHTML="No Reminder Added";
+
+alert("Reminder Deleted");
+
+}
+
+function checkReminder(){
+
+let current=new Date();
+
+let hour=current.getHours().toString().padStart(2,'0');
+let minute=current.getMinutes().toString().padStart(2,'0');
+
+let now=hour+":"+minute;
+
+let savedTime=localStorage.getItem("time");
+let medicine=localStorage.getItem("medicine");
+
+if(now==savedTime){
+
+alert("💊 Time to take "+medicine);
+
+localStorage.removeItem("time");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

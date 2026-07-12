@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeLink AI Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>❤️ LifeLink AI Dashboard</h1>
+</header>
+
+<div class="container">
+
+    <div class="card" onclick="location.href='symptom.html'">
+        <h2>🤖 AI Symptom Checker</h2>
+        <p>Check your symptoms instantly.</p>
+    </div>
+
+    <div class="card" onclick="location.href='hospital.html'">
+        <h2>🏥 Nearby Hospitals</h2>
+        <p>Find hospitals near you.</p>
+    </div>
+
+    <div class="card" onclick="location.href='bloodbank.html'">
+        <h2>🩸 Blood Banks</h2>
+        <p>Find available blood banks.</p>
+    </div>
+
+    <div class="card" onclick="location.href='firstaid.html'">
+        <h2>🩹 First Aid Guide</h2>
+        <p>Emergency first aid tips.</p>
+    </div>
+
+    <div class="card" onclick="location.href='record.html'">
+        <h2>📄 Health Records</h2>
+        <p>Store your medical details.</p>
+    </div>
+
+    <div class="card" onclick="location.href='reminder.html'">
+        <h2>💊 Medicine Reminder</h2>
+        <p>Set medicine reminders.</p>
+    </div>
+
+    <div class="card">
+        <h2>🚑 Emergency SOS</h2>
+        <a href="tel:108">
+            <button>Call 108</button>
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>📍 Live Location</h2>
+        <button onclick="getLocation()">Get Location</button>
+        <p id="location"></p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

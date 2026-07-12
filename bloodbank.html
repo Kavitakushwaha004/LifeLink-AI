@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Bank Finder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🩸 Blood Bank Finder</h1>
+</header>
+
+<div class="container">
+
+<input type="text" id="search" placeholder="Search Blood Bank..." onkeyup="searchBloodBank()">
+
+<select id="bloodGroup" onchange="filterBlood()">
+    <option value="all">All Blood Groups</option>
+    <option>A+</option>
+    <option>A-</option>
+    <option>B+</option>
+    <option>B-</option>
+    <option>AB+</option>
+    <option>AB-</option>
+    <option>O+</option>
+    <option>O-</option>
+</select>
+
+<div class="card blood" data-group="A+ O+">
+    <h2>Red Cross Blood Bank</h2>
+    <p>📍 Bhopal</p>
+    <p>🩸 Available : A+, O+</p>
+
+    <a href="tel:+917555111111">
+        <button>📞 Call</button>
+    </a>
+
+    <a href="https://maps.google.com/?q=Red+Cross+Blood+Bank+Bhopal" target="_blank">
+        <button>📍 Map</button>
+    </a>
+</div>
+
+<div class="card blood" data-group="B+ AB+">
+    <h2>District Blood Bank</h2>
+    <p>📍 Bhopal</p>
+    <p>🩸 Available : B+, AB+</p>
+
+    <a href="tel:+917555222222">
+        <button>📞 Call</button>
+    </a>
+
+    <a href="https://maps.google.com/?q=District+Blood+Bank+Bhopal" target="_blank">
+        <button>📍 Map</button>
+    </a>
+</div>
+
+<div class="card blood" data-group="O- AB-">
+    <h2>City Blood Centre</h2>
+    <p>📍 Bhopal</p>
+    <p>🩸 Available : O-, AB-</p>
+
+    <a href="tel:+917555333333">
+        <button>📞 Call</button>
+    </a>
+
+    <a href="https://maps.google.com/?q=City+Blood+Centre+Bhopal" target="_blank">
+        <button>📍 Map</button>
+    </a>
+</div>
+
+</div>
+
+<script>
+
+function searchBloodBank(){
+
+let input=document.getElementById("search").value.toLowerCase();
+let blood=document.getElementsByClassName("blood");
+
+for(let i=0;i<blood.length;i++){
+
+let text=blood[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+blood[i].style.display="block";
+}else{
+blood[i].style.display="none";
+}
+
+}
+
+}
+
+function filterBlood(){
+
+let group=document.getElementById("bloodGroup").value;
+let blood=document.getElementsByClassName("blood");
+
+for(let i=0;i<blood.length;i++){
+
+let available=blood[i].getAttribute("data-group");
+
+if(group=="all" || available.includes(group)){
+blood[i].style.display="block";
+}else{
+blood[i].style.display="none";
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

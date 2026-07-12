@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeLink AI Chat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>🤖 LifeLink AI Assistant</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<div id="chatBox" style="height:350px;overflow:auto;border:1px solid #ccc;padding:10px;margin-bottom:10px;"></div>
+
+<input type="text" id="question" placeholder="Ask your health question...">
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+let input=document.getElementById("question");
+let question=input.value.toLowerCase().trim();
+
+if(question=="") return;
+
+let chat=document.getElementById("chatBox");
+
+chat.innerHTML+="<p><b>You :</b> "+question+"</p>";
+
+let answer="Sorry! Please consult a doctor.";
+
+if(question.includes("fever")){
+answer="Drink plenty of water, take rest and consult a doctor if fever is high.";
+}
+else if(question.includes("headache")){
+answer="Take rest, stay hydrated and avoid too much screen time.";
+}
+else if(question.includes("cough")){
+answer="Drink warm water and consult a doctor if cough lasts more than 3 days.";
+}
+else if(question.includes("cold")){
+answer="Take rest, drink warm fluids and keep yourself warm.";
+}
+else if(question.includes("stomach")){
+answer="Eat light food and avoid oily meals.";
+}
+else if(question.includes("blood pressure")){
+answer="Check your BP regularly and reduce salt intake.";
+}
+else if(question.includes("diabetes")){
+answer="Monitor your sugar level and avoid excessive sweets.";
+}
+else if(question.includes("heart")){
+answer="Chest pain or heart-related symptoms require immediate medical attention. Call 108.";
+}
+else if(question.includes("ambulance")){
+answer="Dial 108 for ambulance service.";
+}
+else if(question.includes("hospital")){
+answer="Open the Hospital Finder page to locate nearby hospitals.";
+}
+else if(question.includes("blood")){
+answer="Open the Blood Bank page to search for blood availability.";
+}
+else if(question.includes("help")){
+answer="I can help with fever, cough, cold, BP, diabetes, hospitals, blood banks and emergency guidance.";
+}
+
+chat.innerHTML+="<p><b>LifeLink AI :</b> "+answer+"</p><hr>";
+
+chat.scrollTop=chat.scrollHeight;
+
+input.value="";
+
+}
+
+</script>
+
+</body>
+</html>
